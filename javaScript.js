@@ -90,6 +90,10 @@ function displayBooks(){
                 pagesDisplay.textContent ="Number of pages: "+ book.pages;
                 card.appendChild(pagesDisplay);
 
+                const change = document.createElement("button");
+                change.textContent ="read/unread";
+                card.appendChild(change);
+
                 const readDisplay = document.createElement("div");
                 if(book.read == false){
                     readDisplay.textContent = "You didnt read this";
@@ -106,11 +110,26 @@ function displayBooks(){
                 remove.id="remove";
                 card.appendChild(remove);
                 
+
+                change.addEventListener("click", ()=>{
+                  if(book.read == true){
+                    book.read=false;
+                    displayBooks();
+
+                }else {
+                  book.read=true;
+                  displayBooks();
+
+                }
+                })
+
                 books.appendChild(card);
             
                 remove.addEventListener("click", ()=>{
                   myLibrary.splice(index,1);
                   displayBooks();
                 })
+
+                
         });
 }
