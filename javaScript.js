@@ -1,6 +1,9 @@
 
 const books = document.querySelector(".currBooks");
-const btnAdd = document.querySelector(".add");
+const dialog = document.querySelector("dialog");
+const btnAdd = document.querySelector("dialog + .add");
+const closeButton = document.querySelector("dialog button");
+
 
 const myLibrary = [];
 
@@ -12,6 +15,16 @@ function Book(title,author,pages, read){
 
 
 }
+
+// "Show the dialog" button opens the dialog modally
+btnAdd.addEventListener("click", () => {
+    dialog.showModal();
+  });
+  
+  // "Close" button closes the dialog
+  closeButton.addEventListener("click", () => {
+    dialog.close();
+  });
 
 function addBookToLibrary() {
   const newBook= new Book();
@@ -38,10 +51,7 @@ function addBookToLibrary() {
 console.log(myLibrary);
 
 
-btnAdd.addEventListener("click", ()=>{
-    addBookToLibrary();
-    displayBooks();
-})
+
 
 
 function displayBooks(){
