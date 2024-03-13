@@ -3,7 +3,7 @@ const books = document.querySelector(".currBooks");
 const dialog = document.querySelector("dialog");
 const btnAdd = document.querySelector("dialog + .add");
 const closeButton = document.querySelector(".formClose");
-
+const formAdd = document.querySelector(".formAdd");
 
 const myLibrary = [];
 
@@ -51,7 +51,9 @@ function addBookToLibrary() {
 console.log(myLibrary);
 
 
-
+formAdd.addEventListener("click", () =>{
+    
+});
 
 
 function displayBooks(){
