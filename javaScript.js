@@ -5,6 +5,7 @@ const btnAdd = document.querySelector("dialog + .add");
 const closeButton = document.querySelector(".formClose");
 const formAdd = document.querySelector(".formAdd");
 
+
 const myLibrary = [];
 
 function Book(title,author,pages, read){
@@ -28,37 +29,51 @@ btnAdd.addEventListener("click", () => {
 
 function addBookToLibrary() {
   const newBook= new Book();
-  let titleInput = prompt("enter title of the book");
-  newBook.title = titleInput;
+  let dtitle = document.getElementById("title");
+  let dauthor = document.getElementById("author");
+  let dpages = document.getElementById("pages");
+  let dread = document.getElementById("read");
 
-
-
-  let authorInput = prompt("Enter autor name and surname");
-  newBook.author = authorInput;
-  
-
-
-  let pagesInput = prompt("Enter num of pages");
-  newBook.pages = parseInt(pagesInput);
+    newBook.title = dtitle.value;
+    newBook.author = dauthor.value;
+    newBook.pages = dpages.value;
+    newBook.read = dread.checked;
 
 
 
   myLibrary.push(newBook);
-    
+    dtitle.value="";
+    dauthor.value="";
+    dpages.value="";
+    dread.chacked=false;
+
     
 }
 
 console.log(myLibrary);
 
 
+
+
+
+
+
 formAdd.addEventListener("click", () =>{
     
+
+    addBookToLibrary();
+    dialog.close();
+    displayBooks();
 });
 
 
 function displayBooks(){
-    
-        myLibrary.forEach(book => {
+
+
+    while (books.firstChild){
+        books.removeChild(books.lastChild);
+    }
+            myLibrary.forEach(book => {
            
                 const card = document.createElement("div");
                 card.classList.add("card");
@@ -74,9 +89,22 @@ function displayBooks(){
                 pagesDisplay.textContent ="Number of pages: "+ book.pages;
                 card.appendChild(pagesDisplay);
 
+                const readDisplay = document.createElement("div");
+                if(book.read == false){
+                    readDisplay.textContent = "You didnt read this";
+                    readDisplay.style.backgroundColor = "red";
+                    card.appendChild(readDisplay);
+                }else{
+                    readDisplay.textContent = "You  read this";
+                    readDisplay.style.backgroundColor = "green";
+                    card.appendChild(readDisplay);
+                }
+                
                 books.appendChild(card);
             
         });
+        
+        
         
     
 }
