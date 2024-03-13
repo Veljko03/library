@@ -46,14 +46,35 @@ html {
     border-radius: 20px;
 }
 
-::backdrop {
-    background-image: linear-gradient(
-      45deg,
-      magenta,
-      rebeccapurple,
-      dodgerblue,
-      green
-    );
-    opacity: 0.75;
-  }
-  
+.formAdd{
+    width: 100px;
+    background-color: green;
+    border-radius: 20px;
+    border-width: 0;
+    height: 30px;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 15px;
+    justify-self: center;
+
+}
+.formClose{
+    width: 100px;
+    background-color: red;
+    border-radius: 20px;
+    border-width: 0;
+    height: 30px;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 15px;
+    justify-self: center;
+}
+.btn{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.dialog{
+    display: flex;
+    flex-direction: column;    
+    gap: 30px;
+}

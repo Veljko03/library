@@ -2,7 +2,7 @@
 const books = document.querySelector(".currBooks");
 const dialog = document.querySelector("dialog");
 const btnAdd = document.querySelector("dialog + .add");
-const closeButton = document.querySelector("dialog button");
+const closeButton = document.querySelector(".formClose");
 
 
 const myLibrary = [];
