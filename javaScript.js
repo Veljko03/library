@@ -45,7 +45,7 @@ function addBookToLibrary() {
     dtitle.value="";
     dauthor.value="";
     dpages.value="";
-    dread.chacked=false;
+    document.getElementById("read").checked = false;
 
     
 }
@@ -68,13 +68,14 @@ formAdd.addEventListener("click", () =>{
 
 
 function displayBooks(){
-
+  
 
     while (books.firstChild){
         books.removeChild(books.lastChild);
     }
             myLibrary.forEach(book => {
-           
+               
+                let index = myLibrary.indexOf(book);
                 const card = document.createElement("div");
                 card.classList.add("card");
                 const titleDisplay= document.createElement("h1");
@@ -99,12 +100,17 @@ function displayBooks(){
                     readDisplay.style.backgroundColor = "green";
                     card.appendChild(readDisplay);
                 }
+
+                const remove = document.createElement("button");
+                remove.textContent = "Remove";
+                remove.id="remove";
+                card.appendChild(remove);
                 
                 books.appendChild(card);
             
+                remove.addEventListener("click", ()=>{
+                  myLibrary.splice(index,1);
+                  displayBooks();
+                })
         });
-        
-        
-        
-    
 }
